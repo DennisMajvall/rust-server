@@ -1,0 +1,108 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch custom",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/bin/quiche-server",
+      "args": ["-arg1", "-arg2"],
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in library 'quiche_apps'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--lib",
+          "--package=quiche_apps"
+        ],
+        "filter": {
+          "name": "quiche_apps",
+          "kind": "lib"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'server'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=server",
+          "--package=quiche_apps"
+        ],
+        "filter": {
+          "name": "server",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'server'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=server",
+          "--package=quiche_apps"
+        ],
+        "filter": {
+          "name": "server",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug executable 'client'",
+      "cargo": {
+        "args": [
+          "build",
+          "--bin=client",
+          "--package=quiche_apps"
+        ],
+        "filter": {
+          "name": "client",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug unit tests in executable 'client'",
+      "cargo": {
+        "args": [
+          "test",
+          "--no-run",
+          "--bin=client",
+          "--package=quiche_apps"
+        ],
+        "filter": {
+          "name": "client",
+          "kind": "bin"
+        }
+      },
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
