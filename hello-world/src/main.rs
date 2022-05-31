@@ -4,7 +4,7 @@ use rand::Rng;
 
 // axum!
 
-fn main() {
+fn guess_the_number() {
   let random_number = rand::thread_rng().gen_range(1..11);
   println!("Guess the number, psst, it's {}", random_number);
 
@@ -20,18 +20,20 @@ fn main() {
 
     let guess = guess.trim();
 
-    if guess == "quit" { exit(0); }
+    if guess == "quit" {
+      exit(0);
+    }
 
     let guess: u32 = match guess.parse() {
       Ok(num) => num,
       Err(msg) => {
-        println!("{}", msg.to_string());
+        println!("{}", msg);
         continue;
-      },
+      }
     };
 
     if guess == random_number {
-      println!("Correct!");
+      print!("Correct! ");
       lost = false;
       break;
     } else {
@@ -44,4 +46,8 @@ fn main() {
   } else {
     println!("You win!");
   }
+}
+
+fn main() {
+  guess_the_number()
 }
